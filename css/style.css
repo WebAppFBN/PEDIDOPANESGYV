@@ -1,0 +1,445 @@
+/* ============================================================
+   Paleta e identidad — "ticket de panadería"
+   ============================================================ */
+:root {
+  --cream: #FBF6EE;
+  --surface: #FFFDF9;
+  --crust: #6B4226;
+  --crust-dark: #4A2C18;
+  --paprika: #C1440E;
+  --paprika-dark: #9E3608;
+  --ink: #3A2E27;
+  --sage: #4B7F52;
+  --sage-bg: #E7F0E5;
+  --amber: #B4700D;
+  --amber-bg: #FBECD3;
+  --line: #E4D9C5;
+
+  --font-display: "Fraunces", Georgia, serif;
+  --font-body: "Work Sans", "Segoe UI", sans-serif;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background: var(--cream);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+h1, h2, h3 {
+  font-family: var(--font-display);
+  color: var(--crust-dark);
+  margin: 0;
+}
+
+a { color: var(--paprika-dark); }
+
+button {
+  font-family: var(--font-body);
+  cursor: pointer;
+}
+
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+a:focus-visible {
+  outline: 3px solid var(--paprika);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; animation: none !important; }
+}
+
+/* ============================================================
+   Layout general
+   ============================================================ */
+.pagina {
+  max-width: 560px;
+  margin: 0 auto;
+  padding: 32px 20px 64px;
+}
+
+.pagina--ancha {
+  max-width: 980px;
+}
+
+.hero {
+  margin-bottom: 28px;
+}
+
+.hero__negocio {
+  font-size: 15px;
+  letter-spacing: 0.02em;
+  color: var(--paprika-dark);
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+.hero h1 {
+  font-size: 32px;
+  font-weight: 600;
+  line-height: 1.15;
+}
+
+.hero p {
+  margin-top: 10px;
+  color: var(--crust);
+  max-width: 46ch;
+}
+
+/* ============================================================
+   El "ticket" — tarjeta del formulario con muescas laterales
+   ============================================================ */
+.ticket {
+  position: relative;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  padding: 28px 24px;
+}
+
+.ticket::before,
+.ticket::after {
+  content: "";
+  position: absolute;
+  width: 22px;
+  height: 22px;
+  background: var(--cream);
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.ticket::before { left: -12px; }
+.ticket::after { right: -12px; }
+
+.ticket__seccion + .ticket__seccion {
+  margin-top: 22px;
+  padding-top: 22px;
+  border-top: 1px dashed var(--line);
+}
+
+.ticket__titulo {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--crust);
+  margin: 0 0 14px;
+}
+
+/* ============================================================
+   Formulario
+   ============================================================ */
+.campo {
+  margin-bottom: 16px;
+}
+
+.campo label {
+  display: block;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--crust-dark);
+  margin-bottom: 6px;
+}
+
+.campo input[type="text"],
+.campo input[type="tel"],
+.campo input[type="number"] {
+  width: 100%;
+  padding: 11px 12px;
+  border: 1px solid var(--line);
+  border-radius: 5px;
+  background: #fff;
+  color: var(--ink);
+  font-size: 16px;
+}
+
+.fila-cantidad {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.boton-ubicacion {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: transparent;
+  border: 1px solid var(--crust);
+  color: var(--crust-dark);
+  padding: 9px 14px;
+  border-radius: 5px;
+  font-size: 14px;
+  font-weight: 600;
+}
+.boton-ubicacion:hover { background: var(--sage-bg); }
+
+.estado-ubicacion {
+  margin-top: 8px;
+  font-size: 13px;
+  color: var(--sage);
+}
+.estado-ubicacion a { margin-left: 6px; }
+
+.pago-opciones {
+  display: flex;
+  gap: 10px;
+}
+
+.pago-opciones label {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border: 1px solid var(--line);
+  border-radius: 5px;
+  padding: 12px 10px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--crust);
+  cursor: pointer;
+}
+
+.pago-opciones input { accent-color: var(--paprika); }
+
+.pago-opciones label:has(input:checked) {
+  border-color: var(--paprika);
+  background: #FBE9DF;
+  color: var(--paprika-dark);
+}
+
+.nota-transferencia {
+  margin-top: 10px;
+  font-size: 13px;
+  color: var(--crust);
+  background: var(--cream);
+  border: 1px dashed var(--line);
+  border-radius: 5px;
+  padding: 10px 12px;
+  display: none;
+}
+
+.total-linea {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-top: 18px;
+  padding-top: 14px;
+  border-top: 1px dashed var(--line);
+}
+
+.total-linea span:first-child {
+  font-size: 14px;
+  color: var(--crust);
+}
+
+.total-linea strong {
+  font-family: var(--font-display);
+  font-size: 26px;
+  color: var(--paprika-dark);
+}
+
+.boton-primario {
+  width: 100%;
+  margin-top: 20px;
+  background: var(--paprika);
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 14px;
+  font-size: 16px;
+  font-weight: 600;
+}
+.boton-primario:hover { background: var(--paprika-dark); }
+.boton-primario:disabled { opacity: 0.6; cursor: not-allowed; }
+
+.mensaje-confirmacion {
+  display: none;
+  margin-top: 20px;
+  background: var(--sage-bg);
+  border: 1px solid var(--sage);
+  color: #2E4F32;
+  border-radius: 6px;
+  padding: 16px;
+  font-size: 14px;
+}
+
+.mensaje-error {
+  display: none;
+  margin-top: 14px;
+  background: #FBE4DE;
+  border: 1px solid var(--paprika);
+  color: var(--paprika-dark);
+  border-radius: 6px;
+  padding: 12px;
+  font-size: 13px;
+}
+
+/* ============================================================
+   Panel de administración
+   ============================================================ */
+.admin-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  margin-bottom: 22px;
+}
+
+.admin-acciones {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.boton-secundario {
+  background: var(--surface);
+  border: 1px solid var(--crust);
+  color: var(--crust-dark);
+  border-radius: 5px;
+  padding: 9px 14px;
+  font-size: 14px;
+  font-weight: 600;
+}
+.boton-secundario:hover { background: var(--sage-bg); }
+
+.resumen-barra {
+  display: flex;
+  gap: 24px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  padding: 14px 18px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.resumen-item .valor {
+  font-family: var(--font-display);
+  font-size: 22px;
+  color: var(--crust-dark);
+  display: block;
+}
+.resumen-item .etiqueta {
+  font-size: 12px;
+  color: var(--crust);
+}
+
+.tabla-envoltorio {
+  overflow-x: auto;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  background: var(--surface);
+}
+
+table.pedidos {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+  min-width: 900px;
+}
+
+table.pedidos th,
+table.pedidos td {
+  padding: 10px 12px;
+  text-align: left;
+  border-bottom: 1px solid var(--line);
+  white-space: nowrap;
+}
+
+table.pedidos th {
+  position: sticky;
+  top: 0;
+  background: var(--crust);
+  color: #fff;
+  font-weight: 600;
+  z-index: 1;
+}
+
+table.pedidos tbody tr:hover { background: var(--cream); }
+
+.pill {
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 600;
+}
+.pill--pendiente { background: var(--amber-bg); color: var(--amber); }
+.pill--enviado { background: var(--sage-bg); color: var(--sage); }
+
+.accion-fila {
+  display: flex;
+  gap: 6px;
+}
+
+.accion-fila button, .accion-fila a {
+  font-size: 12px;
+  padding: 6px 10px;
+  border-radius: 5px;
+  border: 1px solid var(--line);
+  background: #fff;
+  color: var(--crust-dark);
+  text-decoration: none;
+  font-weight: 600;
+}
+.accion-fila .whatsapp { border-color: var(--sage); color: var(--sage); }
+.accion-fila .whatsapp:hover { background: var(--sage-bg); }
+
+.vacio {
+  padding: 40px 20px;
+  text-align: center;
+  color: var(--crust);
+}
+
+/* ============================================================
+   Portal de PIN (panel de administración)
+   ============================================================ */
+.pin-overlay {
+  position: fixed;
+  inset: 0;
+  background: var(--cream);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+}
+
+.pin-caja {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  padding: 28px;
+  width: 100%;
+  max-width: 320px;
+  text-align: center;
+}
+
+.pin-caja input {
+  width: 100%;
+  margin-top: 14px;
+  padding: 11px 12px;
+  font-size: 20px;
+  letter-spacing: 4px;
+  text-align: center;
+  border: 1px solid var(--line);
+  border-radius: 5px;
+}
+
+.pin-caja .error {
+  color: var(--paprika-dark);
+  font-size: 13px;
+  margin-top: 10px;
+  display: none;
+}
+
+@media (max-width: 640px) {
+  .admin-header { flex-direction: column; align-items: flex-start; }
+}
