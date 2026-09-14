@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Panel de pedidos</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- Traba simple de acceso — ver README sobre sus límites de seguridad -->
+<div class="pin-overlay" id="pinOverlay">
+  <form class="pin-caja" id="formPin">
+    <h2>Panel de pedidos</h2>
+    <p style="color: var(--crust); font-size: 14px; margin-top: 8px;">Ingresá la clave para entrar</p>
+    <input type="password" id="pinInput" inputmode="numeric" autocomplete="off" maxlength="12">
+    <div class="error" id="pinError">Clave incorrecta, probá de nuevo.</div>
+    <button type="submit" class="boton-primario" style="margin-top:14px;">Entrar</button>
+  </form>
+</div>
+
+<div class="pagina pagina--ancha" id="panelAdmin" style="display:none;">
+  <div class="admin-header">
+    <div>
+      <div class="hero__negocio" id="nombreNegocio">Pan Casero</div>
+      <h1 style="font-size: 26px;">Panel de pedidos</h1>
+    </div>
+    <div class="admin-acciones">
+      <button class="boton-secundario" id="btnActualizar">Actualizar</button>
+      <button class="boton-secundario" id="btnDescargar">Descargar Excel</button>
+    </div>
+  </div>
+
+  <div class="resumen-barra" id="resumenBarra">
+    <div class="resumen-item">
+      <span class="valor" id="resumenPedidos">0</span>
+      <span class="etiqueta">Pedidos</span>
+    </div>
+    <div class="resumen-item">
+      <span class="valor" id="resumenPanes">0</span>
+      <span class="etiqueta">Panes</span>
+    </div>
+    <div class="resumen-item">
+      <span class="valor" id="resumenTotal">$0</span>
+      <span class="etiqueta">Total a cobrar</span>
+    </div>
+  </div>
+
+  <div class="tabla-envoltorio">
+    <table class="pedidos">
+      <thead>
+        <tr>
+          <th>Fecha</th>
+          <th>Cliente</th>
+          <th>Contacto</th>
+          <th>Dirección</th>
+          <th>C/ queso</th>
+          <th>S/ queso</th>
+          <th>Total</th>
+          <th>Pago</th>
+          <th>A cobrar</th>
+          <th>Estado</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody id="cuerpoTabla">
+        <tr><td colspan="11" class="vacio">Cargando pedidos…</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+<script src="js/config.js"></script>
+<script src="js/admin.js"></script>
+</body>
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hacé tu pedido de pan casero</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div class="pagina">
+  <div class="hero">
+    <div class="hero__negocio" id="nombreNegocio">Pan Casero</div>
+    <h1>Pan calentito, directo a tu puerta</h1>
+    <p>Completá tus datos y el pedido, elegí cómo pagás y listo — te contactamos para coordinar la entrega.</p>
+  </div>
+
+  <form class="ticket" id="formPedido">
+
+    <div class="ticket__seccion">
+      <p class="ticket__titulo">Tus datos</p>
+      <div class="campo">
+        <label for="nombre">Nombre y apellido</label>
+        <input type="text" id="nombre" name="nombre" required autocomplete="name">
+      </div>
+      <div class="campo">
+        <label for="contacto">WhatsApp / teléfono de contacto</label>
+        <input type="tel" id="contacto" name="contacto" required autocomplete="tel" placeholder="Ej: 388 455-2367">
+      </div>
+      <div class="campo" style="margin-bottom: 6px;">
+        <label for="direccion">Dirección (calle, número, barrio)</label>
+        <input type="text" id="direccion" name="direccion" required autocomplete="street-address">
+      </div>
+      <button type="button" class="boton-ubicacion" id="btnUbicacion">📍 Usar mi ubicación actual</button>
+      <div class="estado-ubicacion" id="estadoUbicacion"></div>
+    </div>
+
+    <div class="ticket__seccion">
+      <p class="ticket__titulo">Cantidad</p>
+      <div class="fila-cantidad">
+        <div class="campo">
+          <label for="conQueso">Pan con queso</label>
+          <input type="number" id="conQueso" name="conQueso" min="0" value="0" inputmode="numeric">
+        </div>
+        <div class="campo">
+          <label for="sinQueso">Pan sin queso</label>
+          <input type="number" id="sinQueso" name="sinQueso" min="0" value="0" inputmode="numeric">
+        </div>
+      </div>
+    </div>
+
+    <div class="ticket__seccion">
+      <p class="ticket__titulo">Medio de pago</p>
+      <div class="pago-opciones">
+        <label>
+          <input type="radio" name="medioPago" value="Efectivo" checked>
+          Efectivo
+        </label>
+        <label>
+          <input type="radio" name="medioPago" value="Transferencia">
+          Transferencia
+        </label>
+      </div>
+      <div class="nota-transferencia" id="notaTransferencia"></div>
+
+      <div class="total-linea">
+        <span>Total del pedido</span>
+        <strong id="totalPagar">$0</strong>
+      </div>
+    </div>
+
+    <button type="submit" class="boton-primario" id="btnEnviar">Confirmar pedido</button>
+    <div class="mensaje-error" id="mensajeError"></div>
+    <div class="mensaje-confirmacion" id="mensajeConfirmacion">
+      ¡Gracias! Tu pedido fue recibido. Te contactamos por WhatsApp para coordinar la entrega.
+    </div>
+  </form>
+</div>
+
+<script src="js/config.js"></script>
+<script src="js/form.js"></script>
+</body>
+</html>
